@@ -1,0 +1,31 @@
+<form class="new-complaint form-horizontal"
+      ng-submit="$ctrl.sendComplaint($ctrl.newComplaint)">
+  <div class="form-group">
+    <label class="row control-label" for="complaintTitleId">
+      Complaint Title
+    </label>
+    <div class="row">
+      <input  class="form-control"
+              id="complaintTitleId"
+              type="text"
+              placeholder="Enter what you'd like to title your complaint"
+              required
+              name="complaintTitle"
+              ng-model="$ctrl.newComplaint.complaintTitle"/>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="row control-label" for="complaintDescriptionId">
+      Complaint Description
+    </label>
+    <div class="row">
+      <textarea  class="form-control"
+              id="complaintDescriptionId"
+              placeholder="Please describe the incident you'd like to file the complaint about"
+              required
+              name="complaintDescription"
+              ng-model="$ctrl.newComplaint.complaintDescription"></textarea>
+    </div>
+  </div>
+  <input type="submit" id="submit" value="Send the Complaint" />
+</form>
