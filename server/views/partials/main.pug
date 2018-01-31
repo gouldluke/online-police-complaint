@@ -1,0 +1,55 @@
+h1 Online Police Complaint 
+h2 {{ myVar }}
+
+h3 Officer Involved
+form(name='officerInvolved')
+  label Name
+  input(
+    type='text'
+    ng-model='formData.name'
+    name='name'
+    required
+  )
+  br
+    
+  label Rank
+  input(
+    type='text'
+    ng-model='formData.rank'
+    name='rank'
+    required
+  )
+  br
+    
+  label Badge Number
+  input(
+    type='number'
+    ng-model='formData.badgeNumber'
+    name='badgeNumber'
+    required
+  )
+  br
+    
+  label Assignment/Role
+  select(name=assignmentOrRole ng-model='formData.assignmentOrRole')
+    option(value="patrol-officer") Patrol Officer
+    option(value="traffic-unit") Traffic Unit
+    option(value="bike-patrol") Bike Patrol
+br
+
+h3 Person Making Complaint
+label Name
+input
+label Address
+input
+label Phone
+input
+label Gender
+input
+label Age
+input
+
+button(ng-click='submitReport()') Submit
+br
+  
+span {{ dataToSubmit }}

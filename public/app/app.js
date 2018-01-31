@@ -8,4 +8,8 @@ angular.module('app').config(function ($routeProvider, $locationProvider){
 
 angular.module('app').controller('mainCtrl', function ($scope) {
   $scope.myVar = "City of Euclid";
+
+  $scope.submitReport = function () {
+    $scope.dataToSubmit = $scope.formData;
+  };
 })
