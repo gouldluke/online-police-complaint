@@ -1,53 +1,99 @@
 h1 Online Police Complaint 
 h2 {{ myVar }}
 
-h3 Officer Involved
-form(name='officerInvolved')
-  label Name
-  input(
-    type='text'
-    ng-model='formData.name'
-    name='name'
-    required
-  )
-  br
+h3 Police Personnel Involved
+form(name='personnelInvolved')
+    div(flex-row)
+        label Name
+        input(
+            type='text'
+            ng-model='formData.personnelName'
+            name='name'
+            required
+        )
+        
+    div(flex-row)
+        label Rank
+        input(
+            type='text'
+            ng-model='formData.rank'
+            name='rank'
+        )
     
-  label Rank
-  input(
-    type='text'
-    ng-model='formData.rank'
-    name='rank'
-    required
-  )
-  br
+    div(flex-row)
+        label Badge Number
+        input(
+            type='number'
+            ng-model='formData.badgeNumber'
+            name='badgeNumber'
+        )
     
-  label Badge Number
-  input(
-    type='number'
-    ng-model='formData.badgeNumber'
-    name='badgeNumber'
-    required
-  )
-  br
-    
-  label Assignment/Role
-  select(name=assignmentOrRole ng-model='formData.assignmentOrRole')
-    option(value="patrol-officer") Patrol Officer
-    option(value="traffic-unit") Traffic Unit
-    option(value="bike-patrol") Bike Patrol
-br
+    //- div(flex-row)
+    //-     label Assignment
+    //-     select(name=assignmentOrRole ng-model='formData.assignment')
+    //-         option(value="patrol-officer") Patrol Officer
+    //-         option(value="traffic-unit") Traffic Unit
+    //-         option(value="bike-patrol") Bike Patrol
 
-h3 Person Making Complaint
-label Name
-input
-label Address
-input
-label Phone
-input
-label Gender
-input
-label Age
-input
+h3 Your Contact Information
+form(name='contactInformation')
+    div(flex-row)
+        label Name
+        input(
+            type='text'
+            ng-model='formData.complaintantName'
+            name='complaintantName'
+        )
+        
+    div(flex-row)
+        label Email Address        
+        input(
+            type='email'
+            ng-model='formData.complaintantEmailAddress'
+            name='complaintantEmailAddress'
+        )
+        
+    div(flex-row)
+        label Phone Number
+        input(
+            type='number'
+            ng-model='formData.complaintantPhoneNumber'
+            name='complaintantPhoneNumber'
+        )
+
+h3 Please Describe the Incident
+form(name='incidentInformation')
+    div(flex-row)
+        label Date 
+        input(
+            type='date'
+            ng-model='formData.incidentDate'
+            name='incidentDate'
+        )
+    div(flex-row)
+        label Time 
+        input(
+            type='time'
+            ng-model='formData.incidentTime'
+            name='incidentTime'
+        )
+        
+        
+    div(flex-row)
+        label Location 
+        input(
+            type='text'
+            ng-model='formData.incidentLocation'
+            name='incidentLocation'
+        )
+        
+    div(flex-row)
+        label Description
+        textarea(
+            ng-model='formData.incidentDescription'
+            name='incidentDescription'
+            required
+        )
 
 button(ng-click='submitReport()') Submit
 br
