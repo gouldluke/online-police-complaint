@@ -1,101 +1,120 @@
 h1 Online Police Complaint 
 h2 {{ myVar }}
 
-h3 Police Personnel Involved
-form(name='personnelInvolved')
-    div(flex-row)
-        label Name
-        input(
-            type='text'
-            ng-model='formData.personnelName'
-            name='name'
-            required
-        )
+div(ng-show="showForm")
+    h3 Police Personnel Involved
+    form(name='personnelInvolved')
+        div(flex-row)
+            label Name
+            input(
+                type='text'
+                ng-model='formData.personnelName'
+                name='name'
+                required
+            )
+            
+        //- div(flex-row)
+        //-     label Rank
+        //-     input(
+        //-         type='text'
+        //-         ng-model='formData.rank'
+        //-         name='rank'
+        //-     )
         
-    div(flex-row)
-        label Rank
-        input(
-            type='text'
-            ng-model='formData.rank'
-            name='rank'
-        )
-    
-    div(flex-row)
-        label Badge Number
-        input(
-            type='number'
-            ng-model='formData.badgeNumber'
-            name='badgeNumber'
-        )
-    
-    //- div(flex-row)
-    //-     label Assignment
-    //-     select(name=assignmentOrRole ng-model='formData.assignment')
-    //-         option(value="patrol-officer") Patrol Officer
-    //-         option(value="traffic-unit") Traffic Unit
-    //-         option(value="bike-patrol") Bike Patrol
+        div(flex-row)
+            label Badge Number
+            input(
+                type='number'
+                ng-model='formData.badgeNumber'
+                name='badgeNumber'
+            )
+        
+        //- div(flex-row)
+        //-     label Assignment
+        //-     select(name=assignmentOrRole ng-model='formData.assignment')
+        //-         option(value="patrol-officer") Patrol Officer
+        //-         option(value="traffic-unit") Traffic Unit
+        //-         option(value="bike-patrol") Bike Patrol
 
-h3 Your Contact Information
-form(name='contactInformation')
-    div(flex-row)
-        label Name
-        input(
-            type='text'
-            ng-model='formData.complaintantName'
-            name='complaintantName'
-        )
-        
-    div(flex-row)
-        label Email Address        
-        input(
-            type='email'
-            ng-model='formData.complaintantEmailAddress'
-            name='complaintantEmailAddress'
-        )
-        
-    div(flex-row)
-        label Phone Number
-        input(
-            type='number'
-            ng-model='formData.complaintantPhoneNumber'
-            name='complaintantPhoneNumber'
-        )
+    h3 Your Contact Information
+    form(name='contactInformation')
+        div(flex-row)
+            label Name
+            input(
+                type='text'
+                ng-model='formData.complaintantName'
+                name='complaintantName'
+            )
+            
+        div(flex-row)
+            label Email Address        
+            input(
+                type='email'
+                ng-model='formData.complaintantEmailAddress'
+                name='complaintantEmailAddress'
+            )
+            
+        div(flex-row)
+            label Phone Number
+            input(
+                type='number'
+                ng-model='formData.complaintantPhoneNumber'
+                name='complaintantPhoneNumber'
+            )
 
-h3 Please Describe the Incident
-form(name='incidentInformation')
-    div(flex-row)
-        label Date 
-        input(
-            type='date'
-            ng-model='formData.incidentDate'
-            name='incidentDate'
-        )
-    div(flex-row)
-        label Time 
-        input(
-            type='time'
-            ng-model='formData.incidentTime'
-            name='incidentTime'
-        )
-        
-        
-    div(flex-row)
-        label Location 
-        input(
-            type='text'
-            ng-model='formData.incidentLocation'
-            name='incidentLocation'
-        )
-        
-    div(flex-row)
-        label Description
-        textarea(
-            ng-model='formData.incidentDescription'
-            name='incidentDescription'
-            required
-        )
+    h3 Please Describe the Incident
+    form(name='incidentInformation')
+        div(flex-row)
+            label Date 
+            input(
+                type='date'
+                ng-model='formData.incidentDateTime'
+                name='incidentDate'
+            )
+        div(flex-row)
+            label Time 
+            input(
+                type='time'
+                ng-model='formData.incidentDateTime'
+                name='incidentTime'
+            )
+            
+            
+        div(flex-row)
+            label Location 
+            input(
+                type='text'
+                ng-model='formData.incidentLocation'
+                name='incidentLocation'
+            )
+            
+        div(flex-row)
+            label Description
+            textarea(
+                ng-model='formData.incidentDescription'
+                name='incidentDescription'
+                required
+            )
 
-button(ng-click='submitReport()') Submit
-br
-  
-span {{ dataToSubmit }}
+    button(ng-click='submitReport()') Submit
+
+div(ng-hide="showForm")
+    h3 Email to Send
+    h4 To: ???
+    h4 Subject: ???
+    h4 Body:
+    div(flex-row)
+        strong Officer: 
+        span  {{ formData.personnelName }}, Badge Number {{ formData.badgeNumber }}
+    div(flex-row)
+        strong Complaintant:
+        span  {{ formData.complaintantName }}, {{ formData.complaintantEmailAddress }}, {{ formData.complaintantPhoneNumber }}
+    div(flex-row)
+        strong Incident Date/Time:
+        span  {{ formData.incidentDateTime | date:'medium' }}
+    div(flex-row)
+        strong Incident Location: 
+        span  {{ formData.incidentLocation }}
+    strong Incident Description:
+    p {{ formData.incidentDescription }}
+    button(ng-click='editReport()') Edit Report
