@@ -29,8 +29,7 @@ app.get('/partials/:partialPath', function(req, res) {
 });
 
 app.get('*', function (req, res) {
-    res.redirect('http://euclidpd.org/officer-interaction/')
-    // res.render('index');
+    res.render('index');
 })
 
 var port = 3030;
