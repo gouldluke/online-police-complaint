@@ -30,6 +30,7 @@ app.get('/partials/:partialPath', function(req, res) {
 
 app.get('*', function (req, res) {
     res.redirect('http://euclidpd.org/officer-interaction/')
+    // filler
     // res.render('index');
 })
 
