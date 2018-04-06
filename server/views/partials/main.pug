@@ -1,55 +1,68 @@
-h1 Online Police Complaint 
-h2 {{ myVar }}
+h1 Online Police Complaint - {{ city }}
 
-h3 Officer Involved
-form(name='officerInvolved')
-  label Name
-  input(
-    type='text'
-    ng-model='formData.name'
-    name='name'
-    required
-  )
-  br
+div(ng-repeat='paragraph in introductionText')
+    p {{ paragraph }}
     
-  label Rank
-  input(
-    type='text'
-    ng-model='formData.rank'
-    name='rank'
-    required
-  )
-  br
-    
-  label Badge Number
-  input(
-    type='number'
-    ng-model='formData.badgeNumber'
-    name='badgeNumber'
-    required
-  )
-  br
-    
-  label Assignment/Role
-  select(name=assignmentOrRole ng-model='formData.assignmentOrRole')
-    option(value="patrol-officer") Patrol Officer
-    option(value="traffic-unit") Traffic Unit
-    option(value="bike-patrol") Bike Patrol
-br
+button(ng-click='submitViaDepartment()') Submit a complaint directly with the Euclid Police Department
+button(ng-click='submitViaWebsite()') Submit a complaint via EuclidPoliceComplaint.com
 
-h3 Person Making Complaint
-label Name
-input
-label Address
-input
-label Phone
-input
-label Gender
-input
-label Age
-input
+form(name='complaintForm' ng-if='showForm')
+    div(id='form-group')
+        h3 Complaint
+        label Date
+        input
+        label Time
+        input
+        label Location
+        input
+        label Description
+        textarea
+        
+    div(id='form-group')
+        h3 Officer Involved
+        label Name
+        input(
+            type='text'
+            ng-model='formData.name'
+            name='name'
+            required
+        )
+        
+        label Rank
+        input(
+            type='text'
+            ng-model='formData.rank'
+            name='rank'
+            required
+        )
+            
+        label Badge Number
+        input(
+            type='number'
+            ng-model='formData.badgeNumber'
+            name='badgeNumber'
+            required
+        )
+        
+        label Assignment/Role
+        select(name=assignmentOrRole ng-model='formData.assignmentOrRole')
+            option(value="patrol-officer") Patrol Officer
+            option(value="traffic-unit") Traffic Unit
+            option(value="bike-patrol") Bike Patrol
+        
+    div(id='form-group')
+        h3 Person Making Complaint
+        label Name
+        input
+        label Email Address
+        input
+        label Phone
+        input
+            
+    button(ng-click='submitForm()') Submit
 
-button(ng-click='submitReport()') Submit
-br
-  
+div(ng-if='showNextSteps')
+    h3 Thanks!
+    text {{ completedText }}
+    
 span {{ dataToSubmit }}
