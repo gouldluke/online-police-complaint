@@ -7,8 +7,9 @@ angular.module('app').config(function ($routeProvider, $locationProvider){
 });
 
 angular.module('app').controller('mainCtrl', function ($scope) {
-  $scope.showForm = false;
+  $scope.showForm = true;
   $scope.showNextSteps = false;
+  $scope.complaintForm = {};
 
   $scope.city = "City of Euclid";
   $scope.introductionText = [
@@ -33,8 +34,12 @@ angular.module('app').controller('mainCtrl', function ($scope) {
   }
 
   $scope.submitForm = function () {
-      $scope.dataToSubmit = $scope.formData;
-      $scope.showForm = false;
+      $scope.dataToSubmit = {
+          plaintiffName: $scope.plaintiffName,
+          plaintiffEmail: $scope.plaintiffEmail,
+          plaintiffPhone: $scope.plaintiffPhone,
+          test: 'test'
+      };
       $scope.showNextSteps = true;
   };
 })
