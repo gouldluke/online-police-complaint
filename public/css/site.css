@@ -3,13 +3,13 @@ div[ng-view] {
   display: flex;
   flex-direction: column;
 }
-form label {
-  width: 140px;
-}
 button {
   margin-top: 12px;
 }
 form #form-group {
   display: flex;
   flex-direction: column;
+}
+form .checkbox {
+  flex-direction: row;
 }
