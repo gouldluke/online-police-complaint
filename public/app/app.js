@@ -34,12 +34,10 @@ angular.module('app').controller('mainCtrl', function ($scope) {
   }
 
   $scope.submitForm = function () {
-      $scope.dataToSubmit = {
-          plaintiffName: $scope.plaintiffName,
-          plaintiffEmail: $scope.plaintiffEmail,
-          plaintiffPhone: $scope.plaintiffPhone,
-          test: 'test'
-      };
       $scope.showNextSteps = true;
+      
+      console.log($scope.complaint);
+      console.log($scope.officer);
+      console.log($scope.plaintiff);
   };
 })

@@ -6,14 +6,13 @@ div(ng-repeat='paragraph in introductionText')
     
 //- button(ng-click='submitViaDepartment()') Submit a complaint directly with the Euclid Police Department
 //- button(ng-click='submitViaWebsite()') Submit a complaint via EuclidPoliceComplaint.com
-
-form(name='complaintForm' ng-if='showForm')
+form()
     div(id='form-group')
         h3 Complaint
         label Date/Time
         input(
             type='datetime-local'
-            ng-model='dateTime'
+            ng-model='complaint.dateTime'
             name='dateTime'
             required
         )
@@ -21,14 +20,14 @@ form(name='complaintForm' ng-if='showForm')
         label Location
         input(
             type='text'
-            ng-model='location'
+            ng-model='complaint.location'
             name='location'
             required
         )
 
         label Description
         textarea(
-            ng-model='description'
+            ng-model='complaint.description'
             name='description'
             required
         )
@@ -38,57 +37,45 @@ form(name='complaintForm' ng-if='showForm')
         label Name
         input(
             type='text'
-            ng-model='officerName'
+            ng-model='officer.name'
             name='officerName'
-            required
         )
 
         label Rank
         input(
             type='text'
-            ng-model='officerRank'
+            ng-model='officer.rank'
             name='officerRank'
-            required
         )
 
         label Badge Number
         input(
             type='number'
-            ng-model='badgeNumber'
+            ng-model='officer.badgeNumber'
             name='badgeNumber'
-            required
         )
-
-        label Assignment/Role
-        select(name=assignmentOrRole ng-model='assignmentOrRole')
-            option(value="patrol-officer") Patrol Officer
-            option(value="traffic-unit") Traffic Unit
-            option(value="bike-patrol") Bike Patrol
 
     div(id='form-group')
         h3 Person Making Complaint
         label Name
         input(
             type='text'
-            ng-model='plaintiffName'
+            ng-model='plaintiff.name'
             name='plaintiffName'
-            required
         )
 
         label Email Address
         input(
             type='email'
-            ng-model='plaintiffEmail'
+            ng-model='plaintiff.email'
             name='plaintiffEmail'
-            required
         )
 
         label Phone
         input(
             type='tel'
-            ng-model='plaintiffPhone'
-            name='plaintiffPhone'
-            required
+            ng-model='plaintiff.phone'
+            name='plaintiff.phone'
         )
 
     div(id='form-group')
