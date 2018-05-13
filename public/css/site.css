@@ -1,0 +1,15 @@
+div[ng-view] {
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+}
+button {
+  margin-top: 12px;
+}
+form #form-group {
+  display: flex;
+  flex-direction: column;
+}
+form .checkbox {
+  flex-direction: row;
+}

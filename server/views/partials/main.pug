@@ -1,120 +1,95 @@
-h1 Online Police Complaint 
-h2 {{ myVar }}
+h1 Online Police Complaint
+h1 {{ city }}
 
-div(ng-show="showForm")
-    h3 Police Personnel Involved
-    form(name='personnelInvolved')
-        div(flex-row)
-            label Name
-            input(
-                type='text'
-                ng-model='formData.personnelName'
-                name='name'
-                required
-            )
-            
-        //- div(flex-row)
-        //-     label Rank
-        //-     input(
-        //-         type='text'
-        //-         ng-model='formData.rank'
-        //-         name='rank'
-        //-     )
+div(ng-repeat='paragraph in introductionText')
+    p {{ paragraph }}
+    
+//- button(ng-click='submitViaDepartment()') Submit a complaint directly with the Euclid Police Department
+//- button(ng-click='submitViaWebsite()') Submit a complaint via EuclidPoliceComplaint.com
+form()
+    div(id='form-group')
+        h3 Complaint
+        label Date/Time
+        input(
+            type='datetime-local'
+            ng-model='complaint.dateTime'
+            name='dateTime'
+            required
+        )
         
-        div(flex-row)
-            label Badge Number
-            input(
-                type='number'
-                ng-model='formData.badgeNumber'
-                name='badgeNumber'
-            )
-        
-        //- div(flex-row)
-        //-     label Assignment
-        //-     select(name=assignmentOrRole ng-model='formData.assignment')
-        //-         option(value="patrol-officer") Patrol Officer
-        //-         option(value="traffic-unit") Traffic Unit
-        //-         option(value="bike-patrol") Bike Patrol
+        label Location
+        input(
+            type='text'
+            ng-model='complaint.location'
+            name='location'
+            required
+        )
 
-    h3 Your Contact Information
-    form(name='contactInformation')
-        div(flex-row)
-            label Name
-            input(
-                type='text'
-                ng-model='formData.complaintantName'
-                name='complaintantName'
-            )
-            
-        div(flex-row)
-            label Email Address        
-            input(
-                type='email'
-                ng-model='formData.complaintantEmailAddress'
-                name='complaintantEmailAddress'
-            )
-            
-        div(flex-row)
-            label Phone Number
-            input(
-                type='number'
-                ng-model='formData.complaintantPhoneNumber'
-                name='complaintantPhoneNumber'
-            )
+        label Description
+        textarea(
+            ng-model='complaint.description'
+            name='description'
+            required
+        )
 
-    h3 Please Describe the Incident
-    form(name='incidentInformation')
-        div(flex-row)
-            label Date 
-            input(
-                type='date'
-                ng-model='formData.incidentDateTime'
-                name='incidentDate'
-            )
-        div(flex-row)
-            label Time 
-            input(
-                type='time'
-                ng-model='formData.incidentDateTime'
-                name='incidentTime'
-            )
-            
-            
-        div(flex-row)
-            label Location 
-            input(
-                type='text'
-                ng-model='formData.incidentLocation'
-                name='incidentLocation'
-            )
-            
-        div(flex-row)
-            label Description
-            textarea(
-                ng-model='formData.incidentDescription'
-                name='incidentDescription'
-                required
-            )
+    div(id='form-group')
+        h3 Officer Involved
+        label Name
+        input(
+            type='text'
+            ng-model='officer.name'
+            name='officerName'
+        )
 
-    button(ng-click='submitReport()') Submit
+        label Rank
+        input(
+            type='text'
+            ng-model='officer.rank'
+            name='officerRank'
+        )
 
-div(ng-hide="showForm")
-    h3 Email to Send
-    h4 To: ???
-    h4 Subject: ???
-    h4 Body:
-    div(flex-row)
-        strong Officer: 
-        span  {{ formData.personnelName }}, Badge Number {{ formData.badgeNumber }}
-    div(flex-row)
-        strong Complaintant:
-        span  {{ formData.complaintantName }}, {{ formData.complaintantEmailAddress }}, {{ formData.complaintantPhoneNumber }}
-    div(flex-row)
-        strong Incident Date/Time:
-        span  {{ formData.incidentDateTime | date:'medium' }}
-    div(flex-row)
-        strong Incident Location: 
-        span  {{ formData.incidentLocation }}
-    strong Incident Description:
-    p {{ formData.incidentDescription }}
-    button(ng-click='editReport()') Edit Report
+        label Badge Number
+        input(
+            type='number'
+            ng-model='officer.badgeNumber'
+            name='badgeNumber'
+        )
+
+    div(id='form-group')
+        h3 Person Making Complaint
+        label Name
+        input(
+            type='text'
+            ng-model='plaintiff.name'
+            name='plaintiffName'
+        )
+
+        label Email Address
+        input(
+            type='email'
+            ng-model='plaintiff.email'
+            name='plaintiffEmail'
+        )
+
+        label Phone
+        input(
+            type='tel'
+            ng-model='plaintiff.phone'
+            name='plaintiff.phone'
+        )
+
+    div(id='form-group' class='checkbox')
+        input(
+            type="checkbox"
+            ng-model='shareComplaint'
+            name='shareComplaint'
+        )
+        label Would you like to submit this report to our database?
+
+    button(ng-click='submitForm()') Submit
+
+div(ng-if='showNextSteps')
+    h3 Thanks!
+    text {{ completedText }}
+
+span {{ dataToSubmit }}
