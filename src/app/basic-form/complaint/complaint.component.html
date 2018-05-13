@@ -1,0 +1,96 @@
+<form [formGroup]="complaintForm">
+    <div class="form-group">
+        <label>Date:
+            <input class="form-control" formControlName="date">
+        </label>
+    </div>
+</form>
+<p>Complaint Value: {{ complaintForm.value | json }}</p>
+ <!--
+     div(id="form-group")
+         h3 Complaint
+         label Date/Time
+         input(
+             type="datetime-local"
+             ng-model="complaint.dateTime"
+             name="dateTime"
+             required
+         )
+
+         label Location
+         input(
+             type="text"
+             ng-model="complaint.location"
+             name="location"
+             required
+         )
+
+         label Description
+         textarea(
+             ng-model="complaint.description"
+             name="description"
+             required
+         )
+
+     div(id="form-group")
+         h3 Officer Involved
+         label Name
+         input(
+             type="text"
+             ng-model="officer.name"
+             name="officerName"
+         )
+
+         label Rank
+         input(
+             type="text"
+             ng-model="officer.rank"
+             name="officerRank"
+         )
+
+         label Badge Number
+         input(
+             type="number"
+             ng-model="officer.badgeNumber"
+             name="badgeNumber"
+         )
+
+     div(id="form-group")
+         h3 Person Making Complaint
+         label Name
+         input(
+             type="text"
+             ng-model="plaintiff.name"
+             name="plaintiffName"
+         )
+
+         label Email Address
+         input(
+             type="email"
+             ng-model="plaintiff.email"
+             name="plaintiffEmail"
+         )
+
+         label Phone
+         input(
+             type="tel"
+             ng-model="plaintiff.phone"
+             name="plaintiff.phone"
+         )
+
+-    div(id="form-group")
++    div(id="form-group" class="checkbox")
+         input(
+             type="checkbox"
+             ng-model="shareComplaint"
+             name="shareComplaint"
+         )
+         label Would you like to submit this report to our database?
+
+     button(ng-click="submitForm()") Submit
+
+ div(ng-if="showNextSteps")
+     h3 Thanks!
+     text {{ completedText }}
+
+ span {{ dataToSubmit }} -->
