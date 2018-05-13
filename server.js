@@ -1,38 +1,41 @@
-var express = require('express'),
-    stylus = require('stylus'),
-    logger = require('morgan'),
-    bodyParser = require('body-parser');
+// Get dependencies
+const express = require('express');
+const path = require('path');
+const http = require('http');
+const bodyParser = require('body-parser');
 
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+// Get our API routes
+const api = require('./server/routes/api');
 
-var app = express();
+const app = express();
 
-function compile(str, path) {
-    return stylus(str).set('filename', path);
-}
-
-app.set('views', __dirname + '/server/views');
-app.set('view engine', 'pug');
-app.use(logger('dev'));
-app.use(bodyParser.urlencoded({extended: true}));
+// Parsers for POST data
 app.use(bodyParser.json());
-app.use(stylus.middleware(
-    {
-        src: __dirname + '/public',
-	      compile: compile
-    }
-));
-app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/partials/:partialPath', function(req, res) {
-  res.render('partials/' + req.params.partialPath);
+// Point static path to dist
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// Set our api routes
+app.use('/api', api);
+
+// Catch all other routes and return the index file
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
-app.get('*', function (req, res) {
-    // res.redirect('http://euclidpd.org/officer-interaction/')
-    res.render('index');
-})
+/**
+ * Get port from environment and store in Express.
+ */
+const port = process.env.PORT || '3000';
+app.set('port', port);
 
-var port = 3030;
-app.listen(port);
-console.log('Listening on port ' + port + '...');
+/**
+ * Create HTTP server.
+ */
+const server = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+server.listen(port, () => console.log(`API running on localhost:${port}`));
