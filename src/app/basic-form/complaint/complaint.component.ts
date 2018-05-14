@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-complaint',
@@ -7,11 +7,19 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./complaint.component.css']
 })
 export class ComplaintComponent implements OnInit {
-    complaintForm = new FormGroup({
-        date: new FormControl()
-    })
+    complaintForm: FormGroup
 
-    constructor() { }
+    constructor(private fb: FormBuilder) {
+        this.createForm();
+    }
+
+    createForm() {
+        this.complaintForm = this.fb.group({
+            date: '',
+            location: '',
+            description: ''
+        })
+    }
 
     ngOnInit() {
     }
