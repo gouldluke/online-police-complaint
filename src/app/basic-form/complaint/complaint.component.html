@@ -1,7 +1,10 @@
 <form [formGroup]="complaintForm">
     <div class="form-group">
         <label>Date:
-            <input class="form-control" formControlName="date">
+            <!-- <input class="form-control" formControlName="date"> -->
+            <input [matDatepicker]="myDatepicker" class="form-control" formControlName="date">
+            <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #myDatepicker></mat-datepicker>
         </label>
     </div>
 </form>
