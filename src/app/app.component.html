@@ -1,4 +1,7 @@
 <h1>Online Police Complaint</h1>
 <h2>City of Euclid</h2>
-<app-select-form></app-select-form>
-<app-basic-form></app-basic-form>
+<app-select-form
+    (showForm)="showForm($event)"
+    [hidden]="showFormValue">
+</app-select-form   >
+<app-basic-form [hidden]="!showFormValue"></app-basic-form>

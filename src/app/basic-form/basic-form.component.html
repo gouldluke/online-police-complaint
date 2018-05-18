@@ -1,6 +1,6 @@
-<app-complaint></app-complaint>
-<app-officer></app-officer>
-<app-plaintiff></app-plaintiff>
+<app-complaint [complaintSection]="complaintSection"></app-complaint>
+<app-officer [officerSection]="officerSection"></app-officer>
+<app-plaintiff [plaintiffSection]="plaintiffSection"></app-plaintiff>
 
 <form [formGroup]="submitSection">
     <div class="form-group">
@@ -9,4 +9,5 @@
         </label>
     </div>
 </form>
-<p>Submit Value: {{ submitSection.value | json }}</p>
+
+<button (click)="submitForm()" mat-raised-button>Submit Complaint</button>
