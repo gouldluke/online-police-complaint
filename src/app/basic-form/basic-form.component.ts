@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-basic-form',
@@ -6,8 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./basic-form.component.css']
 })
 export class BasicFormComponent implements OnInit {
+    submitSection: FormGroup;
 
-  constructor() { }
+    constructor(private fb: FormBuilder) {
+        this.createSubmitSection();
+    }
+
+    createSubmitSection() {
+        this.submitSection = this.fb.group({
+            shareComplaint: '',
+        })
+    }
 
   ngOnInit() {
   }

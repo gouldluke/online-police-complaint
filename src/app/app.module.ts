@@ -7,12 +7,16 @@ import { CustomMaterialModule } from './material.module';
 import { AppComponent } from './app.component';
 import { BasicFormComponent } from './basic-form/basic-form.component';
 import { ComplaintComponent } from './basic-form/complaint/complaint.component';
+import { OfficerComponent } from './basic-form/officer/officer.component';
+import { PlaintiffComponent } from './basic-form/plaintiff/plaintiff.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BasicFormComponent,
-    ComplaintComponent
+    ComplaintComponent,
+    OfficerComponent,
+    PlaintiffComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,23 @@
+<form [formGroup]="officerSection">
+    <div class="form-group">
+        <label>Name:
+            <input class="form-control" formControlName="name">
+        </label>
+    </div>
+    <div class="form-group">
+        <label>Badge Number:
+            <input class="form-control" formControlName="badgeNumber">
+        </label>
+    </div>
+    <div class="form-group">
+        <label>Rank:
+            <input class="form-control" formControlName="rank">
+        </label>
+    </div>
+    <div class="form-group">
+        <label>Description:
+            <textarea class="form-control" formControlName="description"></textarea>
+        </label>
+    </div>
+</form>
+<p>Officer Value: {{ officerSection.value | json }}</p>

@@ -1,1 +1,12 @@
 <app-complaint></app-complaint>
+<app-officer></app-officer>
+<app-plaintiff></app-plaintiff>
+
+<form [formGroup]="submitSection">
+    <div class="form-group">
+        <label>Would you like to submit this report to our database?
+            <input class="form-control" formControlName="shareComplaint">
+        </label>
+    </div>
+</form>
+<p>Submit Value: {{ submitSection.value | json }}</p>

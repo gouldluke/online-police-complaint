@@ -7,14 +7,14 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./complaint.component.css']
 })
 export class ComplaintComponent implements OnInit {
-    complaintForm: FormGroup
+    complaintSection: FormGroup;
 
     constructor(private fb: FormBuilder) {
-        this.createForm();
+        this.createComplaintSection();
     }
 
-    createForm() {
-        this.complaintForm = this.fb.group({
+    createComplaintSection() {
+        this.complaintSection = this.fb.group({
             date: '',
             location: '',
             description: ''
